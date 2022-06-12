@@ -16,8 +16,12 @@ import {
 } from "@heroicons/react/outline";
 import Home from "../pages";
 import HeaderIcon from "./HeaderIcon";
+import { signOut, useSession } from "next-auth/react";
 
 function Header(props) {
+  const { data: session } = useSession();
+  console.log(session);
+
   return (
     <div className="sticky top-0 z-50 bg-white flex items-center p-2 lg:px-5 shadow-md">
       {/* left */}
@@ -28,8 +32,8 @@ function Header(props) {
           height={40}
           layout="fixed"
         />
-        <div className="flex ml-2 items-center bg-gray-100 rounded-full">
-          <SearchIcon className="h-6 text-gray-600" />
+        <div className="flex ml-2 items-center bg-gray-100 rounded-full p-2">
+          <SearchIcon className="h-6 text-gray-500" />
           <input
             className="hidden md:inline-flex ml-2 items-center bg-transparent outline-none placeholder-gray-500 flex-shrink"
             type="text"
@@ -49,7 +53,14 @@ function Header(props) {
       </div>
       {/* right */}
       <div className="flex items-center sm:space-x-2 justify-end">
-        {/* profile picture */}
+        <Image
+          onClick={signOut}
+          className="rounded-full cursor-pointer"
+          src={session.user.image}
+          width="40"
+          height="40"
+          layout="fixed"
+        />
         <p className="whitespace-nowrap font-semibold pr-3">Shourya Bansal</p>
         <ViewGridIcon className="icon" />
         <ChatIcon className="icon" />
