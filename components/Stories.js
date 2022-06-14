@@ -10,7 +10,7 @@ const stories = [
   {
     name: "Jeff Bezos",
     src: "https://links.papareact.com/k2j",
-    profile: "https://links.papareact.com/f0p",
+    profile: "https://links.papareact.com/k2j",
   },
   {
     name: "Mark Zuckerberg",
